@@ -12,6 +12,7 @@
     perms: true
     owner: false
     group: false
+    dest_port: "{{ ansible_port | int }}"
   delegate_to: "{{ inventory_hostname }}"
 
 - name: Kubernetes Apps | Set ArgoCD template list
@@ -53,6 +54,7 @@
     perms: true
     owner: false
     group: false
+    dest_port: "{{ ansible_port | int }}"
   delegate_to: "{{ inventory_hostname }}"
   with_items: "{{ argocd_templates | selectattr('url', 'defined') | list }}"
   when:
